@@ -3,6 +3,8 @@ package ch.ge.dcs.recrutementapp.controller;
 import ch.ge.dcs.recrutementapp.exception.ResourceNotFoundException;
 import ch.ge.dcs.recrutementapp.model.Salle;
 import ch.ge.dcs.recrutementapp.repository.SalleRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +22,8 @@ import java.util.Map;
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/v1")
 public class SalleController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(SalleController.class);
 
     @Autowired
     private SalleRepository salleRepository;
@@ -52,11 +56,15 @@ public class SalleController {
     @DeleteMapping("/salles/{id}")
     public Map<String, Boolean> deleteSalle(@PathVariable(value = "id") final Integer salleId) throws ResourceNotFoundException {
         Salle salle = salleRepository.findById(salleId).orElseThrow(() -> new ResourceNotFoundException("La salle avec l'identifiant " + salleId + " n'existe pas"));
-
-        salleRepository.delete(salle);
-
         Map<String, Boolean> response = new HashMap<>();
-        response.put("deleted Salle :" + salleId, Boolean.TRUE);
+
+        try {
+            salleRepository.delete(salle);
+            response.put("deleted Salle :" + salleId, Boolean.TRUE);
+        } catch (Exception e) {
+            response.put("Salle non effacée :" + salleId + " erreur : " + e.getMessage(), Boolean.FALSE);
+            LOGGER.error("Erreur effacement salle " + salleId + " pour la raison suivante : " + e, e);
+        }
         return response;
     }
 
