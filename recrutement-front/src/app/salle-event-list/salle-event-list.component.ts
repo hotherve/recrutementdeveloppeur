@@ -1,4 +1,9 @@
+
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'
+import { Observable } from 'rxjs';
+import { SalleEvent } from '../salle-event.class';
+import { SalleEventService } from '../salle-event.service';
 
 @Component({
   selector: 'app-salle-event-list',
@@ -7,9 +12,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SalleEventListComponent implements OnInit {
 
-  constructor() { }
+  salleEvents: Observable<SalleEvent>;
+
+  constructor(private salleEventService : SalleEventService, private router : Router) { }
 
   ngOnInit() {
+    this.reloadData();
+  }
+  reloadData() {
+    this.salleEvents = this.salleEventService.getSalleEventList();
   }
 
 }
