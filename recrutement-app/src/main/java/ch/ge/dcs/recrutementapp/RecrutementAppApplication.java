@@ -1,31 +1,21 @@
 package ch.ge.dcs.recrutementapp;
 
-import ch.ge.dcs.recrutementapp.model.Salle;
-import ch.ge.dcs.recrutementapp.repository.SalleRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
 
-import java.util.List;
+/**
+ * Classe principale de lancement de spring boot
+ */
 
 @SpringBootApplication
 public class RecrutementAppApplication {
+    private static final Logger LOGGER = LoggerFactory.getLogger(RecrutementAppApplication.class);
 
-    @Autowired
-    private SalleRepository salleRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(RecrutementAppApplication.class, args);
-    }
-
-    @EventListener(ApplicationReadyEvent.class)
-    public void remplissageEventSalle() {
-        System.out.println("hello world, I have just started up");
-        List<Salle> salles = salleRepository.findAll();
-        salles.stream().forEach(salle -> System.out.println(salle));
-
     }
 
 }

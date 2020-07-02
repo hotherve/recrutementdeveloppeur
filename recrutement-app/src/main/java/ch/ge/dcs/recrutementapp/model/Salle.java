@@ -10,13 +10,14 @@ public class Salle {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String nom_salle;
+    @Column(name = "nom_salle")
+    private String nomSalle;
 
     public Salle() {
     }
 
     public Salle(String nom_salle) {
-        this.nom_salle = nom_salle;
+        this.nomSalle = nom_salle;
     }
 
     public int getId() {
@@ -27,19 +28,19 @@ public class Salle {
         this.id = id;
     }
 
-    public String getNom_salle() {
-        return nom_salle;
+    public String getNomSalle() {
+        return nomSalle;
     }
 
-    public void setNom_salle(String nom_salle) {
-        this.nom_salle = nom_salle;
+    public void setNomSalle(String nom_salle) {
+        this.nomSalle = nom_salle;
     }
 
     @Override
     public String toString() {
         return "Salle{" +
                 "id=" + id +
-                ", nom_salle='" + nom_salle + '\'' +
+                ", nom_salle='" + nomSalle + '\'' +
                 '}';
     }
 }
