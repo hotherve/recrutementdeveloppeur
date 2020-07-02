@@ -3,10 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SalleEventListComponent } from './salle-event-list/salle-event-list.component';
+import { SalleEventDetailsComponent } from './salle-event-details/salle-event-details.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SalleEventListComponent,
+    SalleEventDetailsComponent
   ],
   imports: [
     BrowserModule,
