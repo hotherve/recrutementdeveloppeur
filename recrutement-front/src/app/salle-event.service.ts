@@ -7,12 +7,26 @@ import { Observable } from 'rxjs';
 })
 export class SalleEventService {
 
+
   private baseUrl = 'http://localhost:8080/api/v1';
 
-  constructor(private http: HttpClient) {}
-  
+  constructor(private http: HttpClient) { }
+
   getSalleEventList(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/salleEvenements`);
+    let urlToGet = `${this.baseUrl}/salleEvents`;
+    console.info("Service get evenement salle sur " + urlToGet);
+    return this.http.get(urlToGet);
   }
 
+  getSalleById(id: number): Observable<any> {
+    let urlToGet = `${this.baseUrl}/salle/${id}`;
+    console.info("Service get salle sur " + urlToGet);
+    return this.http.get(`urlToGet`);
+  }
+
+  getEventSalleList(id: number): Observable<any> {
+    let urlToGet = `${this.baseUrl}/salleEvents/${id}`;
+    console.info("Les evenements de la salle " + urlToGet);
+    return this.http.get(urlToGet);
+  }
 }

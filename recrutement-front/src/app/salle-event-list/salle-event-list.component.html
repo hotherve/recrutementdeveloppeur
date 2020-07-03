@@ -1,1 +1,27 @@
-<p>salle-event-list works!</p>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2>Disponibilité des salles</h2>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Salle (id)</th>
+                    <th>Disponibilité</th>
+                    <th>Date dernier évenement</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let salleEvent of salleEvents | async">
+                    <td>{{salleEvent.salle.nomSalle}} ({{salleEvent.salle.id}})</td>
+                    <td>{{salleEvent.salleEvent}}</td>
+                    <td i18n>{{salleEvent.dateEvent | date:'medium'}}</td>
+                    <td><button (click)="salleEventDetails(salleEvent.salle.id)" class="btn btn-info"
+                            style="margin-left: 10px">Details</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

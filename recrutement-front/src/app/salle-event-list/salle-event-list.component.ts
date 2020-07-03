@@ -12,7 +12,7 @@ import { SalleEventService } from '../salle-event.service';
 })
 export class SalleEventListComponent implements OnInit {
 
-  salleEvents: Observable<SalleEvent>;
+  salleEvents: Observable<SalleEvent[]>;
 
   constructor(private salleEventService : SalleEventService, private router : Router) { }
 
@@ -21,6 +21,9 @@ export class SalleEventListComponent implements OnInit {
   }
   reloadData() {
     this.salleEvents = this.salleEventService.getSalleEventList();
+  }
+  salleEventDetails(id: number){
+    this.router.navigate(['listSalleEvent', id]);
   }
 
 }

@@ -1,1 +1,27 @@
 <p>salle-event-details works!</p>
+<div *ngIf="salle">J'ai une salle</div>
+
+
+<div class="panel panel-primary" *ngIf="salle">
+    <div class="panel-heading">
+        <h2>Derniers évenements arrivés dans la salle {{salle.salleNom}}</h2>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Salle (id)</th>
+                    <th>Disponibilité</th>
+                    <th>Date de l'évènement</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let salleEvent of salleEvents | async">
+                    <td>{{salleEvent.salle.nomSalle}} ({{salleEvent.salle.id}})</td>
+                    <td [ngClass]="salleEvent.occupee ? 'occupee':'libre'">{{salleEvent.salleEvent}} {{salleEvent.occupee}}</td>
+                    <td i18n>{{salleEvent.dateEvent | date:'medium'}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

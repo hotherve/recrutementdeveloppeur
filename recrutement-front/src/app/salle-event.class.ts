@@ -1,5 +1,8 @@
+import { Salle } from './salle.class';
+
 export class SalleEvent {
-    time: string;
-    event: string;
-    room_id: string;
+    id: number;
+    salleEvent: string;
+    salle: Salle;
+    occupee: boolean;
 }

@@ -1,8 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { SalleEventListComponent } from './salle-event-list/salle-event-list.component';
+import { SalleEventDetailsComponent } from './salle-event-details/salle-event-details.component';
+import { SalleManagementComponent } from './salle-management/salle-management.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', component: SalleEventListComponent },
+  { path: 'salleEvents', component: SalleEventListComponent },
+  { path: 'salleManagement', component: SalleManagementComponent },
+  { path: 'listSalleEvent/:id', component: SalleEventDetailsComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
