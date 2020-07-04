@@ -29,7 +29,7 @@ registerLocaleData(localeFr);
   ],
   imports: [
     HttpClientModule,
-    BrowserModule,FormsModule,
+    BrowserModule, FormsModule,
     AppRoutingModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: "fr-FR" }],

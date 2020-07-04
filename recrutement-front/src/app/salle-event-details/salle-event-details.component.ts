@@ -26,7 +26,7 @@ export class SalleEventDetailsComponent implements OnInit {
   loadSalleEventList() {
     this.id = this.route.snapshot.params['id'];
 
-    this.salleEventService.getSalleById(this.id).subscribe(data=>{console.log(data); this.salle=data;},error=>console.error(error));
+    this.salleEventService.getSalleById(this.id).subscribe(data => { console.log(data); this.salle = data; }, error => console.error(error));
     console.info("Salle : ", this.salle);
 
     this.salleEvents = this.salleEventService.getEventSalleList(this.id);

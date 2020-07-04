@@ -40,18 +40,21 @@ export class SalleEventService {
     console.info("Service get evenement salle sur " + urlToGet);
     return this.http.get(urlToGet);
   }
+
   /* ajout */
   ajouteSalle(salle: Salle) {
     let urlToPost = `${this.baseUrl}/salles`;
     console.info("Service post ajout salle sur " + urlToPost, salle);
     return this.http.post(urlToPost, salle);
   }
+
   /* modification */
   modifSalle(salle: Salle) {
     let urlToPut = `${this.baseUrl}/salles/${salle.id}`;
     console.info("Service post ajout salle sur " + urlToPut, salle);
     return this.http.put(urlToPut, salle);
   }
+
   /* effacement */
   effaceSalle(salle: Salle) {
     let urlToDelete = `${this.baseUrl}/salles/${salle.id}`;

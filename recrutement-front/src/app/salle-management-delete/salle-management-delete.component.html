@@ -1,14 +1,14 @@
 <h3>Suprimmer une salle</h3>
 <div [hidden]="submitted" style="width: 400px;">
-  <form (ngSubmit)="onSubmit()">
-    
-    <div class="form-group">
-        <label for="nomSalle">Nom de la salle</label>
-        <input type="text" class="form-control" id="nomSalle" readonly [(ngModel)]="salle.nomSalle" name="nomSalle">
-    </div>
+    <form (ngSubmit)="onSubmit()">
 
-    <button type="submit" class="btn btn-danger">Supprimer la salle</button>
-  </form>
+        <div class="form-group">
+            <label for="nomSalle">Nom de la salle</label>
+            <input type="text" class="form-control" id="nomSalle" readonly [(ngModel)]="salle.nomSalle" name="nomSalle">
+        </div>
+
+        <button type="submit" class="btn btn-danger">Supprimer la salle</button>
+    </form>
 </div>
 <div [hidden]="!submitted">
     <h4>Salle supprimée</h4>

@@ -1,10 +1,9 @@
-
 <div class="panel panel-primary">
     <div class="panel-heading">
         <h2>Gestion des salles</h2>
     </div>
-<div class="panel panel-primary"><button (click)="ajoutSalle()" class="btn btn-info"
-    style="margin-left: 10px">Ajouter une salle</button></div>
+    <div class="panel panel-primary"><button (click)="ajoutSalle()" class="btn btn-info"
+            style="margin-left: 10px">Ajouter une salle</button></div>
     <div class="panel-body">
         <table class="table table-striped">
             <thead>
@@ -20,7 +19,7 @@
                     <td>{{salle.nomSalle}}</td>
                     <td><button (click)="salleModif(salle.id)" class="btn btn-info"
                             style="margin-left: 10px">Modifier</button>
-                            
+
                         <button (click)="salleDelete(salle.id)" class="btn btn-info"
                             style="margin-left: 10px">Supprimer</button>
                     </td>

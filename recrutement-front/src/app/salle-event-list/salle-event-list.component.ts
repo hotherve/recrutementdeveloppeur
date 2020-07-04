@@ -14,7 +14,7 @@ export class SalleEventListComponent implements OnInit {
 
   salleEvents: Observable<SalleEvent[]>;
 
-  constructor(private salleEventService : SalleEventService, private router : Router) { }
+  constructor(private salleEventService: SalleEventService, private router: Router) { }
 
   ngOnInit() {
     this.reloadData();
@@ -22,7 +22,7 @@ export class SalleEventListComponent implements OnInit {
   reloadData() {
     this.salleEvents = this.salleEventService.getSalleEventList();
   }
-  salleEventDetails(id: number){
+  salleEventDetails(id: number) {
     this.router.navigate(['listSalleEvent', id]);
   }
 
