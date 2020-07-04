@@ -12,12 +12,10 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
-import javax.validation.Valid;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.temporal.TemporalField;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -47,9 +45,9 @@ public class AtStartup {
 
 
     /**
-     * Methode de remplissage d'evenements pour les salles
+     * Méthode de remplissage d'evenements pour les salles
      *
-     * @param salle la salle qui recoit les evenements
+     * @param salle la salle qui reçoit les évènements
      */
     private void rempliSallesEvenement(Salle salle) {
         LocalDate today = LocalDate.now();
@@ -60,7 +58,7 @@ public class AtStartup {
         for (int i = 10; i >= 0; i--) {
             simulatedDate = today.minusDays(i);
             // zappe samedi et dimanche
-            if(simulatedDate.getDayOfWeek().equals(DayOfWeek.SATURDAY) || simulatedDate.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
+            if (simulatedDate.getDayOfWeek().equals(DayOfWeek.SATURDAY) || simulatedDate.getDayOfWeek().equals(DayOfWeek.SUNDAY)) {
                 LOGGER.info("Samedi ou dimanche");
                 continue;
             }
@@ -69,12 +67,19 @@ public class AtStartup {
                 LocalDateTime localDateTime = simulatedDate.atTime(hour, 0);
                 Date from = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
                 // pas de date future
-                if(from.after(new Date())) {
+                if (from.after(new Date())) {
                     break;
                 }
-                SalleEvenement se = new SalleEvenement(occupe ? SalleEvenement.OCCUPE : SalleEvenement.LIBRE, from, salle);
-                salleEvenementList.add(se);
+                SalleEvenement se;
+                if (salle.getId() % 2 == 0) {
+                    se = new SalleEvenement(occupe ? SalleEvenement.OCCUPE : SalleEvenement.LIBRE, from, salle);
+                } else {
+                    se = new SalleEvenement(!occupe ? SalleEvenement.OCCUPE : SalleEvenement.LIBRE, from, salle);
+                }
+
                 occupe = !occupe;
+
+                salleEvenementList.add(se);
             }
 
             LOGGER.info("simulated : " + simulatedDate);

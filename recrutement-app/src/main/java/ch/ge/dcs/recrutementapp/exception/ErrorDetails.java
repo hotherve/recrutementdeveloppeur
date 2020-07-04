@@ -2,6 +2,9 @@ package ch.ge.dcs.recrutementapp.exception;
 
 import java.util.Date;
 
+/**
+ * Définition générique pour les erreurs
+ */
 public class ErrorDetails {
     private Date timestamp;
     private String message;

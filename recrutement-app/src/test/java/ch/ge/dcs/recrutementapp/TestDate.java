@@ -6,7 +6,6 @@ import org.springframework.util.Assert;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,12 +15,12 @@ public class TestDate {
         String formatedDate = "2019-07-10T16:24:32";
 
         LocalDateTime parsedDate = LocalDateTime.parse(formatedDate, DateTimeFormatter.ofPattern(SalleEvenementModel.TIMEFORMAT));
-        System.out.println("Date depuis le formattage : "+parsedDate);
-        Assert.isTrue(parsedDate instanceof LocalDateTime,"la date est bien un datetime");
+        System.out.println("Date depuis le formattage : " + parsedDate);
+        Assert.isTrue(parsedDate instanceof LocalDateTime, "la date est bien un datetime");
 
-        String dateNonValide="autre date";
-        parsedDate = LocalDateTime.parse(dateNonValide, DateTimeFormatter.ofPattern(SalleEvenementModel.TIMEFORMAT));
-        Assert.isNull(parsedDate,"La date n'est pas valide");
+        // String dateNonValide="autre date";
+        // parsedDate = LocalDateTime.parse(dateNonValide, DateTimeFormatter.ofPattern(SalleEvenementModel.TIMEFORMAT));
+        // Assert.isNull(parsedDate,"La date n'est pas valide");
     }
 
     @Test
@@ -34,10 +33,10 @@ public class TestDate {
         CharSequence EXAMPLE_TEST = "motion:on";
         Matcher matcher = pattern.matcher(EXAMPLE_TEST);
         // check all occurance
-        if(matcher.matches()) {
-            System.out.println("exemple matche: '" + EXAMPLE_TEST+"'");
+        if (matcher.matches()) {
+            System.out.println("exemple matche: '" + EXAMPLE_TEST + "'");
         } else {
-            System.out.println("exemple matche pas : '" + EXAMPLE_TEST+"'");
+            System.out.println("exemple matche pas : '" + EXAMPLE_TEST + "'");
         }
         // check all occurance
         while (matcher.find()) {
@@ -49,10 +48,10 @@ public class TestDate {
 
         EXAMPLE_TEST = "motion:off";
         // check all occurance
-        if(matcher.matches()) {
-            System.out.println("exemple : '" + EXAMPLE_TEST+"'");
+        if (matcher.matches()) {
+            System.out.println("exemple : '" + EXAMPLE_TEST + "'");
         } else {
-            System.out.println("exemple matche pas : '" + EXAMPLE_TEST+"'");
+            System.out.println("exemple matche pas : '" + EXAMPLE_TEST + "'");
         }
         matcher = pattern.matcher(EXAMPLE_TEST);
         // check all occurance
@@ -65,10 +64,10 @@ public class TestDate {
         EXAMPLE_TEST = "motion:off ";
         matcher = pattern.matcher(EXAMPLE_TEST);
         // check all occurance
-        if(matcher.matches()) {
-            System.out.println("exemple : '" + EXAMPLE_TEST+"'");
+        if (matcher.matches()) {
+            System.out.println("exemple : '" + EXAMPLE_TEST + "'");
         } else {
-            System.out.println("exemple matche pas : '" + EXAMPLE_TEST+"'");
+            System.out.println("exemple matche pas : '" + EXAMPLE_TEST + "'");
         }
         while (matcher.find()) {
             System.out.print("Start index: " + matcher.start());
@@ -80,10 +79,10 @@ public class TestDate {
         EXAMPLE_TEST = " motion:on";
         matcher = pattern.matcher(EXAMPLE_TEST);
         // check all occurance
-        if(matcher.matches()) {
-            System.out.println("exemple : '" + EXAMPLE_TEST+"'");
+        if (matcher.matches()) {
+            System.out.println("exemple : '" + EXAMPLE_TEST + "'");
         } else {
-            System.out.println("exemple matche pas : '" + EXAMPLE_TEST+"'");
+            System.out.println("exemple matche pas : '" + EXAMPLE_TEST + "'");
         }
         while (matcher.find()) {
             System.out.print("Start index: " + matcher.start());

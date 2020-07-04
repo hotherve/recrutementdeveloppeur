@@ -3,15 +3,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>ge.ch.dcs</groupId>
-        <artifactId>recrutementdeveloppeur</artifactId>
-        <version>0.1-SNAPSHOT</version>
-        <relativePath>../</relativePath>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.1.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <artifactId>recrutement-app</artifactId>
     <name>recrutement-app</name>
     <description>Demo project for recrutement</description>
-
+    <version>0.1-SNAPSHOT</version>
     <dependencies>
 
         <dependency>
@@ -48,6 +48,13 @@
         </dependency>
 
     </dependencies>
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

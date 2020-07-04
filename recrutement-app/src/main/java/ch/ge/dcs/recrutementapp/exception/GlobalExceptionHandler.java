@@ -14,14 +14,29 @@ import java.util.Date;
  */
 @ControllerAdvice
 public class GlobalExceptionHandler {
+
+    /**
+     * Lorsqu'une exception {@link ch.ge.dcs.recrutementapp.exception.ResourceNotFoundException} est levée dans le code, elle est interceptée ici
+     *
+     * @param ex
+     * @param request
+     * @return
+     */
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<?> resourceNotFoundException(ResourceNotFoundException ex, WebRequest request) {
         ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
     }
 
+    /**
+     * Lorsqu'une exception est levée elle est interceptée ici
+     *
+     * @param ex
+     * @param request
+     * @return
+     */
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<?> globleExcpetionHandler(Exception ex, WebRequest request) {
+    public ResponseEntity<?> globalExceptionHandler(Exception ex, WebRequest request) {
         ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
     }

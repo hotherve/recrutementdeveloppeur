@@ -1,5 +1,16 @@
 # Test Recrutement Développeur
 
+commandes utilisées pour angular :
+
+ng new recrutement-front --style=scss --skip-tests=true --routing
+cd recrutement-front
+npm install --save bootstrap jquery
+npm install --save popper.js@^1.16
+cd src/app
+ng g s salle-event
+ng g c salle-event-list
+ng g c salle-event-details
+
 ## Introduction
 
 Ce projet est un projet fictif utilisé comme test pour le recrutement d'un développeur pour le SCLI DCS de l'OCSIN

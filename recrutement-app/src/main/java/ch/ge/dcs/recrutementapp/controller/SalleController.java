@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Le controlleur pour les salles
+ * Le controlleur pour les salles, peut être accédé en cross origin depuis localhost port 4200 (node js)
  */
 
 @RestController

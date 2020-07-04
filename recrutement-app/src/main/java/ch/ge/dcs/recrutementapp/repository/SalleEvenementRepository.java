@@ -11,6 +11,8 @@ public interface SalleEvenementRepository extends JpaRepository<SalleEvenement, 
 
     List<SalleEvenement> getBySalleEquals(Salle salle);
 
+    List<SalleEvenement> findAllBySalleEqualsOrderByDateEventDesc(Salle salle);
+
     @Query(value = "SELECT distinct se FROM SalleEvenement se WHERE (se.dateEvent, se.salle.id) in (SELECT MAX(sse.dateEvent), sse.salle.id FROM SalleEvenement sse GROUP BY sse.salle.id)")
     List<SalleEvenement> getLastEventFromAllSalles();
 }
