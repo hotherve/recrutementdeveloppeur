@@ -1,1 +1,26 @@
 <p>salle-management works!</p>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2>Gestion des salles</h2>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let salle of salles | async">
+                    <td>{{salle.id}}</td>
+                    <td>{{salle.nomSalle}}</td>
+                    <td><button (click)="salleModif(salle.id)" class="btn btn-info"
+                            style="margin-left: 10px">Modifier</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

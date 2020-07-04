@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Salle } from '../salle.class';
+import { Observable } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SalleEventService } from '../salle-event.service';
 
 @Component({
   selector: 'app-salle-management',
@@ -7,9 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SalleManagementComponent implements OnInit {
 
-  constructor() { }
+  salles : Observable<Salle[]>;
+
+  constructor(private salleEventService : SalleEventService, private router : Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    console.info("init component SalleManagement Component");
+    this.getAllSalles();
   }
 
+  getAllSalles() {
+    console.info("Charge liste des salles");
+    this.salles = this.salleEventService.getSalleList();
+  }
+
+  salleModif(id: number) {
+    this.router.navigate(['salleManagementEdit', id]);
+  }
 }

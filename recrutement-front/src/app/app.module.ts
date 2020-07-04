@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import localeFr from '@angular/common/locales/fr';
 import { registerLocaleData } from '@angular/common';
+import { SalleManagementAddComponent } from './salle-management-add/salle-management-add.component';
+import { SalleManagementEditComponent } from './salle-management-edit/salle-management-edit.component';
 registerLocaleData(localeFr);
 
 @NgModule({
@@ -17,7 +19,9 @@ registerLocaleData(localeFr);
     AppComponent,
     SalleEventListComponent,
     SalleEventDetailsComponent,
-    SalleManagementComponent
+    SalleManagementComponent,
+    SalleManagementAddComponent,
+    SalleManagementEditComponent
   ],
   imports: [
     HttpClientModule,

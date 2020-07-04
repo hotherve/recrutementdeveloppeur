@@ -13,17 +13,26 @@ import { Observable } from 'rxjs';
 export class SalleEventDetailsComponent implements OnInit {
 
   id: number;
-  salle : Observable<Salle>;
-  salleEvents : Observable<SalleEvent[]>;
+  salle: Observable<Salle>;
+  salleEvents: Observable<SalleEvent[]>;
 
-  constructor(private salleEventService : SalleEventService, private router : Router, private route: ActivatedRoute) { }
+  constructor(private salleEventService: SalleEventService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.id = this.route.snapshot.params['id'];
-    this.salle = this.salleEventService.getSalleById(this.id);
-    this.salleEvents = this.salleEventService.getEventSalleList(this.id);
+    this.loadSalleEventList();
   }
+
+  loadSalleEventList() {
+    this.id = this.route.snapshot.params['id'];
+
+    this.salle = this.salleEventService.getSalleById(this.id);
+    console.info("Salle : ", this.salle);
+    
+    this.salleEvents = this.salleEventService.getEventSalleList(this.id);
+
+  }
+
   gotoList() {
-    this.router.navigate(['/employees']);
+    this.router.navigate(['salleEvents']);
   }
 }
