@@ -13,7 +13,7 @@ export class SalleManagementComponent implements OnInit {
 
   salles : Observable<Salle[]>;
 
-  constructor(private salleEventService : SalleEventService, private router : Router, private route: ActivatedRoute) { }
+  constructor(private salleEventService : SalleEventService, private router : Router) { }
 
   ngOnInit() {
     console.info("init component SalleManagement Component");
@@ -27,6 +27,10 @@ export class SalleManagementComponent implements OnInit {
 
   salleModif(id: number) {
     this.router.navigate(['salleManagementEdit', id]);
+  }
+
+  salleDelete(id: number) {
+    this.router.navigate(['salleManagementDelete', id]);
   }
   
   ajoutSalle() {

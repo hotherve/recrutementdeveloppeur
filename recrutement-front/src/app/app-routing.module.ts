@@ -5,6 +5,7 @@ import { SalleEventDetailsComponent } from './salle-event-details/salle-event-de
 import { SalleManagementComponent } from './salle-management/salle-management.component';
 import { SalleManagementAddComponent } from './salle-management-add/salle-management-add.component';
 import { SalleManagementEditComponent } from './salle-management-edit/salle-management-edit.component';
+import { SalleManagementDeleteComponent } from './salle-management-delete/salle-management-delete.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'salleEvents', component: SalleEventListComponent },
   { path: 'salleManagement', component: SalleManagementComponent },
   { path: 'salleManagementAdd', component: SalleManagementAddComponent },
+  { path: 'salleManagementDelete/:id', component: SalleManagementDeleteComponent },
   { path: 'salleManagementEdit/:id', component: SalleManagementEditComponent },
   { path: 'listSalleEvent/:id', component: SalleEventDetailsComponent },
 ];

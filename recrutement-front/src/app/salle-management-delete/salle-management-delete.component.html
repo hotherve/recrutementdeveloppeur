@@ -1,16 +1,16 @@
-<h3>Mise à jour d'une salle</h3>
+<h3>Suprimmer une salle</h3>
 <div [hidden]="submitted" style="width: 400px;">
   <form (ngSubmit)="onSubmit()">
     
     <div class="form-group">
         <label for="nomSalle">Nom de la salle</label>
-        <input type="text" class="form-control" id="nomSalle" required [(ngModel)]="salle.nomSalle" name="nomSalle">
+        <input type="text" class="form-control" id="nomSalle" readonly [(ngModel)]="salle.nomSalle" name="nomSalle">
     </div>
 
-    <button type="submit" class="btn btn-success">Mettre à jour la salle</button>
+    <button type="submit" class="btn btn-danger">Supprimer la salle</button>
   </form>
 </div>
 <div [hidden]="!submitted">
-    <h4>Salle mise a jour</h4>
+    <h4>Salle supprimée</h4>
     <button class="btn btn-success" (click)="listeSalle()">Retour sur la liste des salles</button>
 </div>

@@ -2,6 +2,7 @@ package ch.ge.dcs.recrutementapp.controller;
 
 import ch.ge.dcs.recrutementapp.exception.ResourceNotFoundException;
 import ch.ge.dcs.recrutementapp.model.Salle;
+import ch.ge.dcs.recrutementapp.repository.SalleEvenementRepository;
 import ch.ge.dcs.recrutementapp.repository.SalleRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
@@ -27,6 +29,9 @@ public class SalleController {
 
     @Autowired
     private SalleRepository salleRepository;
+
+    @Autowired
+    private SalleEvenementRepository salleEvenementRepository;
 
     @GetMapping("/salles")
     public List<Salle> getAllSalles() {
@@ -53,12 +58,14 @@ public class SalleController {
         return ResponseEntity.ok(salle1);
     }
 
+    @Transactional
     @DeleteMapping("/salles/{id}")
     public Map<String, Boolean> deleteSalle(@PathVariable(value = "id") final Integer salleId) throws ResourceNotFoundException {
         Salle salle = salleRepository.findById(salleId).orElseThrow(() -> new ResourceNotFoundException("La salle avec l'identifiant " + salleId + " n'existe pas"));
         Map<String, Boolean> response = new HashMap<>();
 
         try {
+            salleEvenementRepository.deleteAllBySalleEquals(salle);
             salleRepository.delete(salle);
             response.put("deleted Salle :" + salleId, Boolean.TRUE);
         } catch (Exception e) {

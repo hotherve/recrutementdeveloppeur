@@ -12,6 +12,8 @@ import localeFr from '@angular/common/locales/fr';
 import { registerLocaleData } from '@angular/common';
 import { SalleManagementAddComponent } from './salle-management-add/salle-management-add.component';
 import { SalleManagementEditComponent } from './salle-management-edit/salle-management-edit.component';
+import { SalleManagementDeleteComponent } from './salle-management-delete/salle-management-delete.component';
+import { EnvoieSignalComponent } from './envoie-signal/envoie-signal.component';
 registerLocaleData(localeFr);
 
 @NgModule({
@@ -21,7 +23,9 @@ registerLocaleData(localeFr);
     SalleEventDetailsComponent,
     SalleManagementComponent,
     SalleManagementAddComponent,
-    SalleManagementEditComponent
+    SalleManagementEditComponent,
+    SalleManagementDeleteComponent,
+    EnvoieSignalComponent
   ],
   imports: [
     HttpClientModule,

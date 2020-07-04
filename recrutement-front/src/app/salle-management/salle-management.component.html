@@ -20,6 +20,9 @@
                     <td>{{salle.nomSalle}}</td>
                     <td><button (click)="salleModif(salle.id)" class="btn btn-info"
                             style="margin-left: 10px">Modifier</button>
+                            
+                        <button (click)="salleDelete(salle.id)" class="btn btn-info"
+                            style="margin-left: 10px">Supprimer</button>
                     </td>
                 </tr>
             </tbody>
