@@ -28,4 +28,8 @@ export class SalleManagementComponent implements OnInit {
   salleModif(id: number) {
     this.router.navigate(['salleManagementEdit', id]);
   }
+  
+  ajoutSalle() {
+    this.router.navigate(['salleManagementAdd']);
+  }
 }

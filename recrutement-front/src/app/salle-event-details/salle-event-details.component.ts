@@ -4,6 +4,7 @@ import { Salle } from '../salle.class';
 import { SalleEventService } from '../salle-event.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { error } from 'protractor';
 
 @Component({
   selector: 'app-salle-event-details',
@@ -25,9 +26,9 @@ export class SalleEventDetailsComponent implements OnInit {
   loadSalleEventList() {
     this.id = this.route.snapshot.params['id'];
 
-    this.salle = this.salleEventService.getSalleById(this.id);
+    this.salleEventService.getSalleById(this.id).subscribe(data=>{console.log(data); this.salle=data;},error=>console.error(error));
     console.info("Salle : ", this.salle);
-    
+
     this.salleEvents = this.salleEventService.getEventSalleList(this.id);
 
   }

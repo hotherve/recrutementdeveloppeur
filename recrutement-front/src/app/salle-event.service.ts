@@ -23,10 +23,8 @@ export class SalleEventService {
 
   getSalleById(id: number): Observable<any> {
     let urlToGet = `${this.baseUrl}/salle/${id}`;
-
-    let response = this.http.get(urlToGet);
-    console.info("Service get salle sur " + urlToGet, response);
-    return response;
+    console.info("Service get salle sur " + urlToGet);
+    return this.http.get(urlToGet);
   }
 
   getEventSalleList(id: number): Observable<any> {
@@ -46,7 +44,7 @@ export class SalleEventService {
   ajouteSalle(salle: Salle) {
     let urlToPost = `${this.baseUrl}/salles`;
     console.info("Service post ajout salle sur " + urlToPost, salle);
-    return this.http.get(urlToPost);
+    return this.http.post(urlToPost, salle);
   }
   /* modification */
   modifSalle(salle: Salle) {
