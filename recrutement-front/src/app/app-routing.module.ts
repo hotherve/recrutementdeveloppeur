@@ -6,6 +6,7 @@ import { SalleManagementComponent } from './salle-management/salle-management.co
 import { SalleManagementAddComponent } from './salle-management-add/salle-management-add.component';
 import { SalleManagementEditComponent } from './salle-management-edit/salle-management-edit.component';
 import { SalleManagementDeleteComponent } from './salle-management-delete/salle-management-delete.component';
+import { EnvoieSignalComponent } from './envoie-signal/envoie-signal.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'salleManagementDelete/:id', component: SalleManagementDeleteComponent },
   { path: 'salleManagementEdit/:id', component: SalleManagementEditComponent },
   { path: 'listSalleEvent/:id', component: SalleEventDetailsComponent },
+  { path: 'envoieSignal', component: EnvoieSignalComponent },
 ];
 
 @NgModule({

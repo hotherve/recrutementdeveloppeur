@@ -67,6 +67,6 @@ export class SalleEventService {
   sendMessage(salleEventModel: SalleEventModel) {
     let urlToPost = `${this.baseUrl}/salleEvenements`;
     console.log("Envoi message capteur sur salle" + salleEventModel.room_id, salleEventModel)
-    this.http.post(urlToPost, salleEventModel);
+    return this.http.post(urlToPost, salleEventModel);
   }
 }

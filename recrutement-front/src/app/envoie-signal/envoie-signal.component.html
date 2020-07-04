@@ -1,1 +1,21 @@
-<p>envoie-signal works!</p>
+<h3>Envoi de signal</h3>
+<form (ngSubmit)="onSubmit()">
+    <div class="form-row">
+        <div class="col">
+            <select class="form-control" id="id_room" name="id_room" [(ngModel)]="id_room">
+                <option *ngFor="let salle of salles" value="{{salle.id}}">{{salle.nomSalle}}</option>
+            </select>
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" id="dateString" required [(ngModel)]="dateString" name="dateString">
+        </div>
+        <div class="col">
+            <select class="form-control" id="signal" name="signal" [(ngModel)]="signal">
+                <option *ngFor="let s of signals" [ngValue]="s">{{s}}</option>
+            </select>
+        </div>
+        <div class="col">
+            <button type="submit" class="btn btn-success">Envoyer le signal</button>
+        </div>
+    </div>
+</form>

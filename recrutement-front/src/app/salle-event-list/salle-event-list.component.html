@@ -15,7 +15,8 @@
             <tbody>
                 <tr *ngFor="let salleEvent of salleEvents | async">
                     <td>{{salleEvent.salle.nomSalle}} ({{salleEvent.salle.id}})</td>
-                    <td>{{salleEvent.salleEvent}}</td>
+                    <td>{{salleEvent.salleEvent}}<span
+                        class="badge {{salleEvent.occupee ? 'badge-danger':'badge-success'}}">{{salleEvent.occupee ? 'occupee':'libre'}}</span></td>
                     <td i18n>{{salleEvent.dateEvent | date:'medium'}}</td>
                     <td><button (click)="salleEventDetails(salleEvent.salle.id)" class="btn btn-info"
                             style="margin-left: 10px">Details</button>

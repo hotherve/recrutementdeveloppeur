@@ -9,12 +9,10 @@ import java.util.List;
 
 public interface SalleEvenementRepository extends JpaRepository<SalleEvenement, Integer> {
 
-    List<SalleEvenement> getBySalleEquals(Salle salle);
-
     void deleteAllBySalleEquals(Salle salle);
 
     List<SalleEvenement> findAllBySalleEqualsOrderByDateEventDesc(Salle salle);
 
-    @Query(value = "SELECT distinct se FROM SalleEvenement se WHERE (se.dateEvent, se.salle.id) in (SELECT MAX(sse.dateEvent), sse.salle.id FROM SalleEvenement sse GROUP BY sse.salle.id)")
+    @Query(value = "FROM SalleEvenement se WHERE (se.dateEvent, se.salle.id) in (SELECT MAX(sse.dateEvent), sse.salle.id FROM SalleEvenement sse GROUP BY sse.salle.id) ORDER BY se.salle.nomSalle")
     List<SalleEvenement> getLastEventFromAllSalles();
 }
